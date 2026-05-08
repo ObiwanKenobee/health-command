@@ -12,6 +12,8 @@ import appCss from "../styles.css?url";
 import { TopBar } from "@/components/layout/TopBar";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { AlertStream } from "@/components/dashboard/AlertStream";
+import { EscalationModal } from "@/components/dashboard/EscalationModal";
+import { HeartgridProvider } from "@/lib/store";
 
 function NotFoundComponent() {
   return (
@@ -93,18 +95,21 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="h-screen w-full flex flex-col bg-background text-foreground overflow-hidden">
-        <TopBar />
-        <div className="flex flex-1 min-h-0">
-          <Sidebar />
-          <main className="flex-1 min-w-0 flex flex-col">
-            <div className="flex-1 min-h-0 overflow-hidden">
-              <Outlet />
-            </div>
-            <AlertStream />
-          </main>
+      <HeartgridProvider>
+        <div className="h-screen w-full flex flex-col bg-background text-foreground overflow-hidden">
+          <TopBar />
+          <div className="flex flex-1 min-h-0">
+            <Sidebar />
+            <main className="flex-1 min-w-0 flex flex-col">
+              <div className="flex-1 min-h-0 overflow-hidden">
+                <Outlet />
+              </div>
+              <AlertStream />
+            </main>
+          </div>
+          <EscalationModal />
         </div>
-      </div>
+      </HeartgridProvider>
     </QueryClientProvider>
   );
 }
