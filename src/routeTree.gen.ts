@@ -9,12 +9,60 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VaccinationRouteImport } from './routes/vaccination'
 import { Route as SurveillanceRouteImport } from './routes/surveillance'
+import { Route as NutritionRouteImport } from './routes/nutrition'
+import { Route as MaternalRouteImport } from './routes/maternal'
+import { Route as ForecastingRouteImport } from './routes/forecasting'
+import { Route as EnvironmentalRouteImport } from './routes/environmental'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as DataRouteImport } from './routes/data'
+import { Route as ChwRouteImport } from './routes/chw'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VaccinationRoute = VaccinationRouteImport.update({
+  id: '/vaccination',
+  path: '/vaccination',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SurveillanceRoute = SurveillanceRouteImport.update({
   id: '/surveillance',
   path: '/surveillance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NutritionRoute = NutritionRouteImport.update({
+  id: '/nutrition',
+  path: '/nutrition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaternalRoute = MaternalRouteImport.update({
+  id: '/maternal',
+  path: '/maternal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForecastingRoute = ForecastingRouteImport.update({
+  id: '/forecasting',
+  path: '/forecasting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnvironmentalRoute = EnvironmentalRouteImport.update({
+  id: '/environmental',
+  path: '/environmental',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataRoute = DataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChwRoute = ChwRouteImport.update({
+  id: '/chw',
+  path: '/chw',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +73,156 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chw': typeof ChwRoute
+  '/data': typeof DataRoute
+  '/emergency': typeof EmergencyRoute
+  '/environmental': typeof EnvironmentalRoute
+  '/forecasting': typeof ForecastingRoute
+  '/maternal': typeof MaternalRoute
+  '/nutrition': typeof NutritionRoute
   '/surveillance': typeof SurveillanceRoute
+  '/vaccination': typeof VaccinationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chw': typeof ChwRoute
+  '/data': typeof DataRoute
+  '/emergency': typeof EmergencyRoute
+  '/environmental': typeof EnvironmentalRoute
+  '/forecasting': typeof ForecastingRoute
+  '/maternal': typeof MaternalRoute
+  '/nutrition': typeof NutritionRoute
   '/surveillance': typeof SurveillanceRoute
+  '/vaccination': typeof VaccinationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chw': typeof ChwRoute
+  '/data': typeof DataRoute
+  '/emergency': typeof EmergencyRoute
+  '/environmental': typeof EnvironmentalRoute
+  '/forecasting': typeof ForecastingRoute
+  '/maternal': typeof MaternalRoute
+  '/nutrition': typeof NutritionRoute
   '/surveillance': typeof SurveillanceRoute
+  '/vaccination': typeof VaccinationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/surveillance'
+  fullPaths:
+    | '/'
+    | '/chw'
+    | '/data'
+    | '/emergency'
+    | '/environmental'
+    | '/forecasting'
+    | '/maternal'
+    | '/nutrition'
+    | '/surveillance'
+    | '/vaccination'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/surveillance'
-  id: '__root__' | '/' | '/surveillance'
+  to:
+    | '/'
+    | '/chw'
+    | '/data'
+    | '/emergency'
+    | '/environmental'
+    | '/forecasting'
+    | '/maternal'
+    | '/nutrition'
+    | '/surveillance'
+    | '/vaccination'
+  id:
+    | '__root__'
+    | '/'
+    | '/chw'
+    | '/data'
+    | '/emergency'
+    | '/environmental'
+    | '/forecasting'
+    | '/maternal'
+    | '/nutrition'
+    | '/surveillance'
+    | '/vaccination'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChwRoute: typeof ChwRoute
+  DataRoute: typeof DataRoute
+  EmergencyRoute: typeof EmergencyRoute
+  EnvironmentalRoute: typeof EnvironmentalRoute
+  ForecastingRoute: typeof ForecastingRoute
+  MaternalRoute: typeof MaternalRoute
+  NutritionRoute: typeof NutritionRoute
   SurveillanceRoute: typeof SurveillanceRoute
+  VaccinationRoute: typeof VaccinationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vaccination': {
+      id: '/vaccination'
+      path: '/vaccination'
+      fullPath: '/vaccination'
+      preLoaderRoute: typeof VaccinationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/surveillance': {
       id: '/surveillance'
       path: '/surveillance'
       fullPath: '/surveillance'
       preLoaderRoute: typeof SurveillanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nutrition': {
+      id: '/nutrition'
+      path: '/nutrition'
+      fullPath: '/nutrition'
+      preLoaderRoute: typeof NutritionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maternal': {
+      id: '/maternal'
+      path: '/maternal'
+      fullPath: '/maternal'
+      preLoaderRoute: typeof MaternalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forecasting': {
+      id: '/forecasting'
+      path: '/forecasting'
+      fullPath: '/forecasting'
+      preLoaderRoute: typeof ForecastingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/environmental': {
+      id: '/environmental'
+      path: '/environmental'
+      fullPath: '/environmental'
+      preLoaderRoute: typeof EnvironmentalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data': {
+      id: '/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chw': {
+      id: '/chw'
+      path: '/chw'
+      fullPath: '/chw'
+      preLoaderRoute: typeof ChwRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +237,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChwRoute: ChwRoute,
+  DataRoute: DataRoute,
+  EmergencyRoute: EmergencyRoute,
+  EnvironmentalRoute: EnvironmentalRoute,
+  ForecastingRoute: ForecastingRoute,
+  MaternalRoute: MaternalRoute,
+  NutritionRoute: NutritionRoute,
   SurveillanceRoute: SurveillanceRoute,
+  VaccinationRoute: VaccinationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
